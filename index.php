@@ -31,7 +31,7 @@
         }
 
         .form-legend {
-            max-width: 50%;
+            max-width: 65%;
         }
 
         .form-border {
