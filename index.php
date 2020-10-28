@@ -18,6 +18,7 @@
         .container {
             max-width: 500px;
             padding: 10px;
+            margin: auto;
         }
 
         .form-warper {
@@ -46,11 +47,18 @@
             word-spacing: 5px;
         }
 
+        .form-submit input {
+            padding: 4px;
+            margin-top: 10px;
+        }
+
         .inp_x {
             padding: 5px;
         }
 
-        #full-name, #user-email, #username, #password, #cpassowrd{
+        #full-name, #user-email, #username, #password, #cpassword{
+            position: absolute;
+            left: 700px;
             max-width: 100%;
         } 
     </style>
@@ -111,14 +119,27 @@
                         </div>
                     </fieldset>
                 </div>
+
+                <div class="form-group form-legend">
+                    <fieldset>
+                        <legend>Profile Picture</legend>
+                        <div class="inp_x">
+                            <input type="file" name="FileUpload" id="FileUpload">
+                        </div>
+                    </fieldset>
+                </div>
                 
                 <div class="form-submit">
                     <input type="submit" value="Submit">
                     <input type="reset" value="Reset">
                 </div>
+                
             </div>
             </form>
         </fieldset>
+        <?php 
+            $name = $email = $username = $pass = $cpass = $gender = $dob = "";
+        ?>
     </div>
 </body>
 </html>
