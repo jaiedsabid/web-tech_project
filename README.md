@@ -1,1 +1,1 @@
-# web-tech_ex1
+# web-tech_project
