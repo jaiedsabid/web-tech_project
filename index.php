@@ -16,6 +16,7 @@
         }
 
         .container {
+            display: block;
             max-width: 500px;
             padding: 10px;
             margin: auto;
@@ -62,14 +63,14 @@
         }
 
         footer {
-            text-align: center;
-            position: fixed;
+            position: absolute;
             bottom: 5px;
+            margin-left: 8%;
         }
 
         #full-name, #user-email, #username, #password, #cpassword{
             position: absolute;
-            left: 700px;
+            left: 46%;
             max-width: 100%;
         } 
     </style>
@@ -77,23 +78,45 @@
 <body>
 
 <?php
-    $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = ""; 
+    $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = $message_f = "";
+    $err_star = "<p style='color: red; display: inline-block'>*</p>";
+    $err_pass = "";
     
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        if(empty($_POST['name'])){$nameE = "*"; $message_x = "Please Fillup Required Fields!";}
-        if(empty($_POST['email'])){$emailE = "*";}
-        if(empty($_POST['username'])){$usernameE = "*";}
-        if(empty($_POST['password'])){$passE = "*";}
-        if(empty($_POST['cpassword'])){$cpassE = "*";}
+        if(empty($_POST['name'])){$nameE = $err_star; $message_x = "Please Fillup Required Fields!";}
+        if(empty($_POST['email'])){$emailE = $err_star;}
+        if(empty($_POST['username'])){$usernameE = $err_star;}
+        if(empty($_POST['password'])){$passE = $err_star;} else {
+            if($_POST['password'] != $_POST['cpassword'])
+            {
+                $err_pass = "<h4 style='color: red;'>Password didn't match.</h4>";
+            }
+        }
+        if(empty($_POST['cpassword'])){$cpassE = $err_star;}
+
+
+        $target_dir = "files/";
+        $target_file = $target_dir . basename($_FILES["FileUpload"]["name"]);
+
+        if (move_uploaded_file($_FILES["FileUpload"]["tmp_name"], $target_file)) {
+            $message_f = "The file ". basename( $_FILES["FileUpload"]["name"]). " has been uploaded.";
+        }
+        else {
+            $message_f = "Sorry, there was an error uploading your file.";
+        }
     }
 ?>
 
     <div class="container">
-        <?php echo "<h4>$message_x</h4>";?>
+        <?php
+            echo "<h4 style='color: red'>$message_x</h4>";
+            echo "<h4 style='color: red'>$message_f</h4>";
+            echo $err_pass;
+        ?>
         <fieldset>
             <legend><strong>Registration</strong></legend>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
             <div class="form-warper">
                 <div class="form-group form-border">
                     <label for="full-name">Name:</label>
