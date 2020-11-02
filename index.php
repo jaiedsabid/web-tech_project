@@ -49,11 +49,22 @@
 
         .form-submit input {
             padding: 4px;
+            width: 65px;
             margin-top: 10px;
         }
 
         .inp_x {
             padding: 5px;
+        }
+
+        .container>fieldset {
+            margin-top: 25px;
+        }
+
+        footer {
+            text-align: center;
+            position: fixed;
+            bottom: 5px;
         }
 
         #full-name, #user-email, #username, #password, #cpassword{
@@ -64,34 +75,49 @@
     </style>
 </head>
 <body>
+
+<?php
+    $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = ""; 
+    
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(empty($_POST['name'])){$nameE = "*"; $message_x = "Please Fillup Required Fields!";}
+        if(empty($_POST['email'])){$emailE = "*";}
+        if(empty($_POST['username'])){$usernameE = "*";}
+        if(empty($_POST['password'])){$passE = "*";}
+        if(empty($_POST['cpassword'])){$cpassE = "*";}
+    }
+?>
+
     <div class="container">
+        <?php echo "<h4>$message_x</h4>";?>
         <fieldset>
             <legend><strong>Registration</strong></legend>
-            <form action="action/message.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class="form-warper">
                 <div class="form-group form-border">
                     <label for="full-name">Name:</label>
-                    <input type="text" name="name" id="full-name"required/>
+                    <input type="text" name="name" id="full-name"/><?php echo $nameE;?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="user-email">Email:</label>
-                    <input type="email" name="email" id="user-email"required/>
+                    <input type="email" name="email" id="user-email"/><?php echo $emailE;?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="username">Username:</label>
-                    <input type="text" name="username" id="username"required/>
+                    <input type="text" name="username" id="username"/><?php echo $usernameE;?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="password">Password:</label></td>
-                    <input type="password" name="password" id="password"required/>
+                    <input type="password" name="password" id="password"/><?php echo $passE;?>
                 </div>
                 
                 <div class="form-group form-border">
                     <label for="cpassword">Confirm Password:</label></td>
-                    <input type="password" name="cpassword" id="cpassword"required/>
+                    <input type="password" name="cpassword" id="cpassword"/><?php echo $cpassE;?>
                 </div>
 
                 <div class="form-group form-legend">
@@ -133,13 +159,13 @@
                     <input type="submit" value="Submit">
                     <input type="reset" value="Reset">
                 </div>
-                
             </div>
             </form>
         </fieldset>
-        <?php 
-            $name = $email = $username = $pass = $cpass = $gender = $dob = "";
-        ?>
+    <footer>
+        <?php include 'footer.php'?>
+    </footer>
+
     </div>
 </body>
 </html>
