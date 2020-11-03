@@ -20,6 +20,7 @@
             max-width: 500px;
             padding: 10px;
             margin: auto;
+            position: relative;
         }
 
         .form-warper {
@@ -63,7 +64,7 @@
         }
 
         footer {
-            position: absolute;
+            position: fixed;
             bottom: 5px;
             margin-left: 8%;
         }
