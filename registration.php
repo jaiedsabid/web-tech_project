@@ -80,19 +80,26 @@
 
 <?php
     $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = $message_f = "";
+    $namei = $emaili = $usernamei = $gender = $dob = $passi = "";
     $err_star = "<p style='color: red; display: inline-block'>*</p>";
-    $err_pass = "";
+    $err_pass = $message_s = "";
     
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+        $gender = $_POST['gender'];
+        $dob = $_POST['date'];
         if(empty($_POST['name'])){$nameE = $err_star; $message_x = "Please Fillup Required Fields!";}
+        else{$namei = $_POST['name'];}
         if(empty($_POST['email'])){$emailE = $err_star;}
+        else{$emaili = $_POST['email'];}
         if(empty($_POST['username'])){$usernameE = $err_star;}
+        else{$usernamei = $_POST['username'];}
         if(empty($_POST['password'])){$passE = $err_star;} else {
             if($_POST['password'] != $_POST['cpassword'])
             {
                 $err_pass = "<h4 style='color: red;'>Password didn't match.</h4>";
             }
+            else{$passi = $_POST['password'];}
         }
         if(empty($_POST['cpassword'])){$cpassE = $err_star;}
 
@@ -106,6 +113,33 @@
         else {
             $message_f = "Sorry, there was an error uploading your file.";
         }
+?>
+
+<?php
+    // Database
+    $server = "localhost";
+    $usernamedb = "root";
+    $passdb = "";
+    $databasenm = "ticketing_sys";
+
+    $conx = new mysqli($server, $usernamedb, $passdb, $databasenm);
+
+    if($conx->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $querx = "INSERT INTO users VALUES ('$usernamei', '$namei', '$gender', '$emaili', '$passi', '$dob')";
+
+    if($conx->query($querx))
+    {
+        $message_s = "<h4>Registration successful...</h4>" ;
+    }
+    else
+    {
+        $message_s =  "<h6>Registration failed...!</h6>";
+    }
+
+    $conx->close();
     }
 ?>
 
@@ -114,6 +148,7 @@
             echo "<h4 style='color: red'>$message_x</h4>";
             echo "<h4 style='color: red'>$message_f</h4>";
             echo $err_pass;
+            echo $message_s; 
         ?>
         <fieldset>
             <legend><strong>Registration</strong></legend>
