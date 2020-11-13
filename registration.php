@@ -80,7 +80,7 @@
 
 <?php
     $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = $message_f = "";
-    $namei = $emaili = $usernamei = $gender = $dob = $passi = "";
+    $namei = $emaili = $usernamei = $gender = $dob = $passi = $utype = "";
     $err_star = "<p style='color: red; display: inline-block'>*</p>";
     $err_pass = $message_s = "";
     
@@ -201,6 +201,23 @@
                         <legend>Date of Birth</legend>
                         <div class="inp_x">
                             <input type="date" name="date" id="dob">
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="form-group form-legend">
+                    <fieldset>
+                        <legend>User Type</legend>
+                        <div class="btn-group btn-group-toggle inp_x" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="usertype" id="customer" value="customer" checked="checked"> Customer
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="usertype" id="admin" value="admin"> Admin
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="usertype" id="employee" value="employee"> Employee
+                            </label>
                         </div>
                     </fieldset>
                 </div>

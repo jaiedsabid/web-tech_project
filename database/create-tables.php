@@ -16,7 +16,9 @@
     gender VARCHAR(30) NOT NULL,
     email VARCHAR(50) NOT NULL,
     userpass VARCHAR(50) NOT NULL,
-    dob VARCHAR(20) NOT NULL
+    dob VARCHAR(20) NOT NULL,
+    utype VARCHAR(20) NOT NULL,
+    UNIQUE (username, email)
     )";
     if ($conn->query($sql) === TRUE) {
     echo "Table users created successfully";
