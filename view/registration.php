@@ -63,10 +63,17 @@
             margin-top: 25px;
         }
 
+        .container>a {
+            margin-top: 10px;
+            position: absolute;
+            left: 20%;
+        }
+
         footer {
             position: fixed;
-            bottom: 5px;
+            bottom: 1px;
             margin-left: 8%;
+            padding: 10px;
         }
 
         #full-name, #user-email, #username, #password, #cpassword{
@@ -238,10 +245,11 @@
             </div>
             </form>
         </fieldset>
-    <footer>
-        <?php include 'footer.php'?>
-    </footer>
+        <a href="../index.php">Already have an account? Go back to login page</a>
 
+        <footer>
+            <?php include('footer.php')?>
+        </footer>
     </div>
 </body>
 </html>

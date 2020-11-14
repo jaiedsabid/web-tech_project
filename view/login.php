@@ -1,6 +1,6 @@
 <?php 
 
-    include('../control/logincheck.php');
+    include("../control/logincheck.php");
 
     if(isset($_SESSION['username'])){
     header("location: home.php");
@@ -23,17 +23,14 @@
 
     .container {
         border-radius: 3px;
-        max-width: 320px;
-        max-height: 120px;
-        min-width: 320px;
-        min-height: 120px;
-        margin: auto;
-        padding: 5px;
-        background-color: gray;
+        background-color: gainsboro;
+        display: block;
+        max-width: 500px;
+        padding: 10px;
+        margin: 10% auto 0 auto;
     }
 
     .form-wrap {
-        color: white;
         margin: 10px;
         text-align: center;
         padding: 10px;
@@ -46,9 +43,11 @@
     </style>
 </head>
 <body>
+    <?php echo "<h1>$error_m</h1>"; ?>
+    <?php echo "<h1>$check_inp</h1>"; ?>
     <div class="container">
         <div class="form-wrap">
-            <form action="" method="get">
+            <form action="" method="POST">
             
             <div class="form-grp">
             <label for="username">Username: 
@@ -60,10 +59,13 @@
             </div>
 
             <div class="sub-button">
-            <input type="submit" value="Login">
+            <input type="submit" name="submit" value="Login">
             </div>
             
             </form>
+            
+            <br>
+            <a href="registration.php">Don't have an account? Signup here.</a>
         </div>
     </div>
 </body>
