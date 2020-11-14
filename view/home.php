@@ -23,6 +23,5 @@ header("Location: ../control/login.php"); // Redirecting To Home Page
     <?php include("navbar.php"); ?>
     <h1>Welcome <?php echo $_SESSION['username']; ?></h1>
     <p>Do you want to buy ticket?</p>
-    <a href="../control/logout.php">Logout</a>
 </body>
 </html>
