@@ -44,7 +44,6 @@
 </head>
 <body>
     <?php echo "<h1>$error_m</h1>"; ?>
-    <?php echo "<h1>$check_inp</h1>"; ?>
     <div class="container">
         <div class="form-wrap">
             <form action="" method="POST">

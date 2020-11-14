@@ -18,6 +18,7 @@
     userpass VARCHAR(50) NOT NULL,
     dob VARCHAR(20) NOT NULL,
     utype VARCHAR(20) NOT NULL,
+    img VARCHAR(20) NOT NULL,
     UNIQUE (username, email)
     )";
     if ($conn->query($sql) === TRUE) {
@@ -27,7 +28,7 @@
     }
     $conn->close();
 ?>
-
+<br>
 <?php
     $servername = "localhost";
     $username = "root";//DB default username is root
@@ -47,7 +48,7 @@
     UNIQUE (id)
     )";
     if ($conn->query($sql) === TRUE) {
-    echo "Table users created successfully";
+    echo "Table movies created successfully";
     } else {
     echo "Error creating table: " . $conn->error;
     }

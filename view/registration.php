@@ -1,3 +1,7 @@
+<?php
+include("../control/db.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +90,7 @@
 <body>
 
 <?php
+    $reg_data = array();
     $nameE = $emailE = $usernameE = $passE = $cpassE = $message_x = $message_f = "";
     $namei = $emaili = $usernamei = $gender = $dob = $passi = $utype = "";
     $err_star = "<p style='color: red; display: inline-block'>*</p>";
@@ -93,25 +98,27 @@
     
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $gender = $_POST['gender'];
-        $dob = $_POST['date'];
+        $reg_data['gender'] = $_POST['gender'];
+        $reg_data['dob'] = $_POST['date'];
+        $reg_data['usertype'] = $_POST['usertype'];
         if(empty($_POST['name'])){$nameE = $err_star; $message_x = "Please Fillup Required Fields!";}
-        else{$namei = $_POST['name'];}
+        else{$reg_data['name'] = $_POST['name'];}
         if(empty($_POST['email'])){$emailE = $err_star;}
-        else{$emaili = $_POST['email'];}
+        else{$reg_data['email'] = $_POST['email'];}
         if(empty($_POST['username'])){$usernameE = $err_star;}
-        else{$usernamei = $_POST['username'];}
+        else{$reg_data['username'] = $_POST['username'];}
         if(empty($_POST['password'])){$passE = $err_star;} else {
             if($_POST['password'] != $_POST['cpassword'])
             {
                 $err_pass = "<h4 style='color: red;'>Password didn't match.</h4>";
             }
-            else{$passi = $_POST['password'];}
+            else{$reg_data['password'] = $_POST['password'];}
         }
         if(empty($_POST['cpassword'])){$cpassE = $err_star;}
 
 
-        $target_dir = "files/";
+        $target_dir = "../files/";
+        $reg_data['img'] = $_FILES["FileUpload"]["name"];
         $target_file = $target_dir . basename($_FILES["FileUpload"]["name"]);
 
         if (move_uploaded_file($_FILES["FileUpload"]["tmp_name"], $target_file)) {
@@ -120,70 +127,55 @@
         else {
             $message_f = "Sorry, there was an error uploading your file.";
         }
+
+    }
 ?>
 
+
 <?php
-    // Database
-    $server = "localhost";
-    $usernamedb = "root";
-    $passdb = "";
-    $databasenm = "ticketing_sys";
-
-    $conx = new mysqli($server, $usernamedb, $passdb, $databasenm);
-
-    if($conx->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $querx = "INSERT INTO users VALUES ('$usernamei', '$namei', '$gender', '$emaili', '$passi', '$dob')";
-
-    if($conx->query($querx))
-    {
-        $message_s = "<h4>Registration successful...</h4>" ;
-    }
-    else
-    {
-        $message_s =  "<h6>Registration failed...!</h6>";
-    }
-
-    $conx->close();
-    }
+if(isset($_POST['submit']))
+{
+    $conn = new db();
+    $connobj = $conn->OpenCon();
+    $message_s = $conn->UserRegistration($connobj, $reg_data);
+    $conn->CloseCon($connobj);
+}
 ?>
 
     <div class="container">
-        <?php
-            echo "<h4 style='color: red'>$message_x</h4>";
-            echo "<h4 style='color: red'>$message_f</h4>";
-            echo $err_pass;
-            echo $message_s; 
-        ?>
+    <?php
+        echo "<h4 style='color: red'>$message_x</h4>";
+        echo "<h4 style='color: red'>$message_f</h4>";
+        echo $err_pass;
+        echo $message_s; 
+    ?>
         <fieldset>
             <legend><strong>Registration</strong></legend>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="form-warper">
                 <div class="form-group form-border">
                     <label for="full-name">Name:</label>
-                    <input type="text" name="name" id="full-name"/><?php echo $nameE;?>
+                    <input type="text" name="name" id="full-name"/><?php echo $nameE; ?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="user-email">Email:</label>
-                    <input type="email" name="email" id="user-email"/><?php echo $emailE;?>
+                    <input type="email" name="email" id="user-email"/><?php echo $emailE; ?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="username">Username:</label>
-                    <input type="text" name="username" id="username"/><?php echo $usernameE;?>
+                    <input type="text" name="username" id="username"/><?php echo $usernameE; ?>
                 </div>
 
                 <div class="form-group form-border">
                     <label for="password">Password:</label></td>
-                    <input type="password" name="password" id="password"/><?php echo $passE;?>
+                    <input type="password" name="password" id="password"/><?php echo $passE; ?>
                 </div>
                 
                 <div class="form-group form-border">
                     <label for="cpassword">Confirm Password:</label></td>
-                    <input type="password" name="cpassword" id="cpassword"/><?php echo $cpassE;?>
+                    <input type="password" name="cpassword" id="cpassword"/><?php echo $cpassE; ?>
                 </div>
 
                 <div class="form-group form-legend">
@@ -239,7 +231,7 @@
                 </div>
                 
                 <div class="form-submit">
-                    <input type="submit" value="Submit">
+                    <input type="submit" name="submit" value="Submit">
                     <input type="reset" value="Reset">
                 </div>
             </div>
@@ -248,7 +240,7 @@
         <a href="../index.php">Already have an account? Go back to login page</a>
 
         <footer>
-            <?php include('footer.php')?>
+            <?php include('footer.php') ?>
         </footer>
     </div>
 </body>

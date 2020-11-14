@@ -4,7 +4,6 @@
     session_start();
 
     $error_m = "";
-    $check_inp = "";
 
     if(isset($_POST['submit']))
     {
@@ -18,8 +17,6 @@
         {
             $username = $_POST['username'];
             $password = $_POST['password'];
-
-            $check_inp = $username . " " . $password;
 
             $conn = new db();
             $connobj = $conn->OpenCon();
