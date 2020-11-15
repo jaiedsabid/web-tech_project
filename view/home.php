@@ -49,6 +49,7 @@ $username = $_SESSION['username'];
         $res = $con->CheckUserType($conobj, $username);
         $con->CloseCon($conobj);
 
+        $_SESSION['all_data'] = $res;
         $_SESSION['utype'] = $res['utype'];
         $_SESSION['fullname'] = $res['fullname'];
     ?>
