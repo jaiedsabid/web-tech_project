@@ -45,5 +45,8 @@ if($_SESSION['utype'] != "customer") // Redirecting to home if user is not custo
         <?php include("navbar.php"); ?> <br>
         <h1>Available sits for booking</h1>
     </div>
+    <footer>
+        <?php include("footer.php"); ?>
+    </footer>
 </body>
 </html>

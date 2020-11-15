@@ -38,5 +38,9 @@ header("Location: ../control/login.php"); // Redirecting To Home Page
     <label for="email">Email: </label><?php echo $_SESSION['all_data']['email']; ?> <br>
     <label for="usrtype">User type: </label><?php echo $_SESSION['all_data']['utype']; ?> <br>
     </div>
+
+    <footer>
+        <?php include("footer.php"); ?>
+    </footer>
 </body>
 </html>

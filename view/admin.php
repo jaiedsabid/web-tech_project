@@ -19,6 +19,8 @@ if($_SESSION['utype'] != "admin") // Redirecting to home if user is not admin ty
     <title>Admin Panel</title>
 </head>
 <body>
-    
+    <footer>
+        <?php include("footer.php"); ?>
+    </footer>
 </body>
 </html>

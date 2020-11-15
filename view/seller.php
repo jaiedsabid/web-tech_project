@@ -21,5 +21,8 @@ if($_SESSION['utype'] != "employee") // Redirecting to home if user is not selle
 </head>
 <body>
     
+    <footer>
+        <?php include("footer.php"); ?>
+    </footer>
 </body>
 </html>
