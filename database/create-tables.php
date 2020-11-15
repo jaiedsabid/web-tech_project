@@ -19,6 +19,7 @@
     dob VARCHAR(20) NOT NULL,
     utype VARCHAR(20) NOT NULL,
     img VARCHAR(20) NOT NULL,
+    verified VARCHAR(10) NOT NULL,
     UNIQUE (username, email)
     )";
     if ($conn->query($sql) === TRUE) {
