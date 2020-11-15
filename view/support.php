@@ -19,6 +19,8 @@ if($_SESSION['utype'] != "support") // Redirecting to home if user is not admin 
     <title>Support Panel</title>
 </head>
 <body>
+    <?php include("navbar.php"); ?>
+    <h1>Support Panel</h1>
     <footer>
         <?php include("footer.php"); ?>
     </footer>
