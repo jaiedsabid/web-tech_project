@@ -36,6 +36,17 @@ class db
 
         return $message_s;
     }
+    function CheckUserType($conn, $username)
+    {
+        $query = "SELECT * FROM users WHERE username='$username'";
+        $result = $conn->query($query);
+        if($result->num_rows > 0)
+        {
+            $res = $result->fetch_assoc();
+        }
+        $result->free();
+        return $res;
+    }
     function CloseCon($conn)
     {
         $conn->close();
