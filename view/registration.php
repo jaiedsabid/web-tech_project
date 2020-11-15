@@ -207,7 +207,18 @@ if(isset($_POST['submit']))
                 <div class="form-group form-legend">
                     <fieldset>
                         <legend>User Type</legend>
-                        <div class="btn-group btn-group-toggle inp_x" data-toggle="buttons">
+
+                        <div class="btn-group btn-group-toggle inp_x">
+                        <select name="usertype" id="usertype">
+                            <option value="">Please Choose User Type</option>
+                            <option value="customer">Customer</option>
+                            <option value="admin">Admin</option>
+                            <option value="employee">Employee</option>
+                            <option value="support">Support</option>
+                        </select>
+                        </div>
+
+                    <!--    <div class="btn-group btn-group-toggle inp_x" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio" name="usertype" id="customer" value="customer" checked="checked"> Customer
                             </label>
@@ -217,7 +228,11 @@ if(isset($_POST['submit']))
                             <label class="btn btn-primary">
                                 <input type="radio" name="usertype" id="employee" value="employee"> Employee
                             </label>
-                        </div>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="usertype" id="support" value="support"> Support
+                            </label>
+                        </div> -->
+
                     </fieldset>
                 </div>
 
