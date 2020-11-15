@@ -24,7 +24,7 @@ class db
         $message_s = "";
         $que = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $sqlq = $conn->prepare($que);
-        $sqlq->bind_param("ssssssss", $reg_data['username'], $reg_data['name'], $reg_data['gender'], $reg_data['email'], $reg_data['password'],
+        $sqlq->bind_param("sssssssss", $reg_data['username'], $reg_data['name'], $reg_data['gender'], $reg_data['email'], $reg_data['password'],
         $reg_data['dob'], $reg_data['usertype'], $reg_data['img'], $def_value);
         
         if($sqlq->execute())
