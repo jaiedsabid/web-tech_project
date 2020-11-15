@@ -1,1 +1,1 @@
-<?php echo  "<p>Copyright &copy; 2020-" . date("Y") . " Jaiedsabid.com</p>";?>
+<?php echo  "<p>Copyright &copy; 2020-" . date("Y") . " movietickets.com</p>";?>
