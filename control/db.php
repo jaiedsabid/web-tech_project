@@ -22,10 +22,10 @@ class db
     {
         $def_value = "0"; // Default value of verified column
         $message_s = "";
-        $que = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $que = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $sqlq = $conn->prepare($que);
-        $sqlq->bind_param("sssssssss", $reg_data['username'], $reg_data['name'], $reg_data['gender'], $reg_data['email'], $reg_data['password'],
-        $reg_data['dob'], $reg_data['usertype'], $reg_data['img'], $def_value);
+        $sqlq->bind_param("ssssssss", $reg_data['username'], $reg_data['name'], $reg_data['gender'], $reg_data['email'], $reg_data['password'],
+        $reg_data['dob'], $reg_data['usertype'], $reg_data['img']);
         
         if($sqlq->execute())
         {
