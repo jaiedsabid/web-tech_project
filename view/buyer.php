@@ -15,31 +15,16 @@ if($_SESSION['utype'] != "customer") // Redirecting to home if user is not custo
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Tickets</title>
-    <style>
-        * {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .container {
-            margin: 5px;
-            padding: 10px;
-        }
-
-        .message-home {
-            border: 1px solid black;
-            width: 50%;
-        }
-
-        h1, h2, h3, h4, h5, p {
-            padding: 5px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Movie Ticket Booking System</title>
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" sizes="100x100" href="assets/img/icons8-movie-ticket-100.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
+
 <body>
     <div class="container">
         <?php include("navbar.php"); ?> <br>
@@ -48,5 +33,8 @@ if($_SESSION['utype'] != "customer") // Redirecting to home if user is not custo
     <footer>
         <?php include("footer.php"); ?>
     </footer>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

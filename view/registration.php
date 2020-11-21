@@ -7,6 +7,7 @@ include("../control/db.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="100x100" href="assets/img/icons8-movie-ticket-100.png">
     <title>Registration Form</title>
     <style>
         * {
@@ -73,10 +74,10 @@ include("../control/db.php");
             left: 20%;
         }
 
-        footer {
-            position: fixed;
+        .footer {
+            position: absolute;
             bottom: 1px;
-            margin-left: 8%;
+            left: 37%;
             padding: 10px;
         }
 
@@ -252,11 +253,10 @@ if(isset($_POST['submit']))
             </div>
             </form>
         </fieldset>
-        <a href="../index.php">Already have an account? Go back to login page</a>
-
-        <footer>
-            <?php include('footer.php') ?>
-        </footer>
+        <a href="../index.php" style="text-decoration: none;">Already have an account? Go back to login page</a>
     </div>
+    <footer>
+            <div class="footer">Copyright© 2020-<?php include("footer.php"); ?> by Jaied Al Sabid. All Rights Reserved.</div>
+    </footer>
 </body>
 </html>
