@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Movie Ticket Booking System</title>
+    <title>User Login</title>
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" sizes="100x100" href="assets/img/icons8-movie-ticket-100.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
