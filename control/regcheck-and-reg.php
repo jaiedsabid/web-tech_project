@@ -7,6 +7,7 @@
     $namei = $emaili = $usernamei = $gender = $dob = $passi = $utype = "";
     $err_star = "<p style='color: red; display: inline-block'>*</p>";
     $err_pass = $message_s = "";
+    $pattern = "/^([a-z0-9]+)(([\-\_]+)[a-z0-9]+)*(\.[a-z0-9]+)*@([a-z0-9]+)(\.[a-z0-9]+)*((\.[a-z0-9]+)+)$/";
     
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -16,7 +17,14 @@
         if(empty($_POST['name'])){$nameE = $err_star; $message_x = "Please Fillup Required Fields!"; $error_st = true;}
         else{$reg_data['name'] = $_POST['name'];}
         if(empty($_POST['email'])){$emailE = $err_star; $error_st = true;}
-        else{$reg_data['email'] = $_POST['email'];}
+        else
+        {
+            if(!preg_match($pattern, $_POST['email']))
+            {
+                $emailE = $err_star; $error_st = true;
+            }
+            else{$reg_data['email'] = $_POST['email'];}
+        }
         if(empty($_POST['username'])){$usernameE = $err_star; $error_st = true;}
         else{$reg_data['username'] = $_POST['username'];}
         if(empty($_POST['password'])){$passE = $err_star; $error_st = true;} else {

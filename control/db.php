@@ -48,6 +48,38 @@ class db
         $result->free();
         return $res;
     }
+    function changePassword($conn, $username, $password)
+    {
+        $message_s = "";
+        $que = "UPDATE users SET userpass = ? WHERE username = ?";
+        $sqlq = $conn->prepare($que);
+        $sqlq->bind_param("ss", $password, $username);
+        
+        if($sqlq->execute())
+        {
+            $message_s = '
+            <div id="action-message">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center"><span>Password changed successfully</span></div>
+                    </div>
+                </div>
+            </div>' ;
+        }
+        else {
+            $message_s = '<div id="action-message">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center"><span>Password change failed!</span></div>
+                                </div>
+                            </div>
+                        </div>';
+        }
+
+        $sqlq->close();
+
+        return $message_s;
+    }
     function CloseCon($conn)
     {
         $conn->close();

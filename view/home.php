@@ -37,33 +37,20 @@ $username = $_SESSION['username'];
 ?>
 
 <body style="background: rgb(241,247,252);">
-    <nav class="navbar navbar-light navbar-expand-md" style="background: rgb(179,189,197);box-shadow: 0px 0px 5px 2px rgb(139,139,146);">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><strong>Movie Tickets</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="home.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="buyer.php">Book Ticket</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Control Panel</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="admin.php">Admin Panel</a><a class="dropdown-item" href="seller.php">Employer Panel</a></div>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../control/logout.php">Logout</a></li>
-                </ul>
-        </div>
-        </div>
-    </nav>
+
+    <?php include('navbar.php'); ?>
+
     <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div style="text-shadow: 0px 0px 5px rgb(44,44,44);color: rgb(246,250,255);">
-                        <h1>Welcome&nbsp;<span><?php echo $_SESSION['fullname']; ?></span></h1>
-                        <hr style="border-color: rgb(207,207,207);">
-                        <p><?php echo "Today is " . date("d-m-Y"); ?></p>
+        <div style="height: 100vh;background: url(&quot;assets/img/header-bg-2.jpg&quot;) center / cover no-repeat;">
+            <div class="container">
+                <div class="row" style="margin-right: auto;margin-left: auto;">
+                    <div class="col-md-12 text-center">
+                        <div style="text-shadow: 0px 0px 5px rgb(44,44,44);color: rgb(255,255,255);background: rgba(255,255,255,0.8);margin-top: 225px;padding-top: 90px;height: 50vh;">
+                            <h1 style="color: rgb(88,0,0);">Welcome&nbsp;<span style="color: rgb(88,0,0);"><?php echo $_SESSION['fullname']; ?></span></h1>
+                            <hr style="border-color: #f32424;width: 275px;color: rgb(88,0,0);">
+                            <p style="color: rgb(88,0,0);"><?php echo "Today is " . date("d-m-Y"); ?></p>
+                        </div>
                     </div>
-                    <div style="background: url(&quot;assets/img/header-bg-2.jpg&quot;) center / auto no-repeat;height: 100%;filter: blur(2px);position: relative;z-index: -1;bottom: 100%;box-shadow: 0px 0px 2px 2px #383839;"></div>
                 </div>
             </div>
         </div>
@@ -77,6 +64,10 @@ $username = $_SESSION['username'];
                         if($_SESSION['utype'] == "customer")
                         {
                             include("cust_message.php");
+                        }
+                        elseif($_SESSION['utype'] == "admin")
+                        {
+                            include("admin_message.php");
                         }
                     ?>
                     </p>

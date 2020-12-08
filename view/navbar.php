@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-md" style="background: rgb(179,189,197);box-shadow: 0px 0px 5px 2px rgb(139,139,146);">
+<nav class="navbar navbar-light navbar-expand-md fixed-top" style="background: rgba(179,189,197,0.8);box-shadow: 0px 0px 5px 2px rgb(139,139,146);">
         <div class="container-fluid"><a class="navbar-brand" href="#"><strong>Movie Tickets</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
@@ -12,6 +12,6 @@
                     <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>
                     <li class="nav-item"><a class="nav-link" href="../control/logout.php">Logout</a></li>
                 </ul>
-            </div>
+        </div>
         </div>
 </nav>

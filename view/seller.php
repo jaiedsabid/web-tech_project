@@ -10,6 +10,22 @@ if($_SESSION['utype'] != "employee") // Redirecting to home if user is not selle
     header("location: home.php");
 }
 
+$_SESSION["id"]= " ";
+$_SESSION["moviename"]= " ";
+$_SESSION["showtime"]= " ";
+$id= $moviename= $showtime= " ";
+if(isset($_POST['confirm'])){
+    $id=$_POST['id'];
+    $_SESSION["id"]= $id;
+
+    $moviename=$_POST['moviename'];
+    $_SESSION["moviename"]=$moviename;
+
+    $showtime=$_POST['showtime'];
+    $_SESSION["showtime"]= $showtime;
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +42,48 @@ if($_SESSION['utype'] != "employee") // Redirecting to home if user is not selle
 </head>
 
 <body>
+<fieldset>
+
+
+<form action="  " method="POST" enctype="multipart/form-data">
+
+<tr>
+<td>Id:</td>
+<td><input type="text" id="id" name="id"></td> 
+</tr>
+<br><br>
+
+<tr>
+<td>Movie Name:</td>
+<td><input type="text" id="moviename" name="moviename"> </td>
+</tr>
+<br><br>
+
+<td>Date of Birth:</td>
+<td><input type="date" id="DOB" name="DOB" ></td>
+<tr>
+<br><br>
+
+<tr>
+<td>Show Time:</td>
+<td><input type="text" id="showtime" name="showtime"> </td>
+</tr>
+<br><br>
+
+
+<button type="button" onclick="alert">confirm</button>
     
+</form>
+</fieldset>
+<?php
+echo  $_SESSION ["id"];
+echo "<br>";
+echo  $_SESSION["moviename"];
+echo "<br>";
+echo  $_SESSION["showtime"];
+echo "<br>";
+
+?>
     <footer>
         <?php include("footer.php"); ?>
     </footer>
