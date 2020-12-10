@@ -6,6 +6,8 @@ header("Location: ../control/login.php"); // Redirecting To Home Page
 }
 
 include('../control/change-pass.php');
+include('../control/update-general-info.php');
+
 
 ?>
 
@@ -37,7 +39,7 @@ include('../control/change-pass.php');
         <div class="container">
             <div class="row">
                 <div class="col-md-6" style="text-align: center;">
-                    <h5>Profile Picture</h5><img class="img-fluid" src="../files/<?php echo $_SESSION['all_data']['img']; ?>" width="250px" height="250px" style="margin-bottom: 10px;">
+                    <h5>Profile Picture</h5> <?php echo '<img class="img-fluid" src="data:image/jpeg;base64,' . base64_encode($_SESSION['all_data']['img']) . '" width="250px" height="250px" style="margin-bottom: 10px;"/>'; ?>
                 </div>
                 <div class="col-md-6">
                     <div>
@@ -67,9 +69,9 @@ include('../control/change-pass.php');
                             <form method="post">
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <div class="col"><label class="change-info" for="name">Full Name:<input class="form-control" type="text" name="name"></label><label class="change-info" for="email">Email:&nbsp;<input class="form-control" type="text" name="email"></label></div>
+                                        <div class="col"><label class="change-info" for="name">Full Name:<input class="form-control" type="text" name="fname"></label><label class="change-info" for="email">Email:&nbsp;<input class="form-control" type="text" name="email"></label></div>
                                     </div>
-                                    <div class="text-center"><button class="btn btn-primary change-info-btn" type="submit" name="submit">Apply</button><button class="btn btn-primary change-info-btn" type="reset" name="reset">Reset</button></div>
+                                    <div class="text-center"><button class="btn btn-primary change-info-btn" type="submit" name="ginfo">Apply</button><button class="btn btn-primary change-info-btn" type="reset" name="reset">Reset</button></div>
                                 </div>
                             </form>
                         </div>

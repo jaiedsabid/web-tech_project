@@ -50,12 +50,19 @@
 
         if($error_st != true)
         {
-            $target_dir = "../files/";
-            $reg_data['img'] = $_FILES["FileUpload"]["name"];
-            $target_file = $target_dir . basename($_FILES["FileUpload"]["name"]);
+            if (is_uploaded_file($_FILES['FileUpload']['tmp_name'])) {
+                $reg_data['img'] = addslashes(file_get_contents($_FILES['FileUpload']['tmp_name']));
+                $reg_data['imgp'] = getimageSize($_FILES['FileUpload']['tmp_name']);
 
-            if (move_uploaded_file($_FILES["FileUpload"]["tmp_name"], $target_file)) {
-                $message_f = "The file ". basename( $_FILES["FileUpload"]["name"]). " has been uploaded.";
+                if(isset($_POST['submit']))
+                {
+                    $conn = new db();
+                    $connobj = $conn->OpenCon();
+                    $message_s = $conn->UserRegistration($connobj, $reg_data);
+                    $conn->CloseCon($connobj);
+                    
+                    $message_f = "The file ". basename( $_FILES["FileUpload"]["name"]). " has been uploaded.";
+                }
             }
             else {
                 $message_f = "Sorry, there was an error uploading your file.";
@@ -63,14 +70,4 @@
         }
 
     }
-?>
-
-<?php
-if(isset($_POST['submit']))
-{
-    $conn = new db();
-    $connobj = $conn->OpenCon();
-    $message_s = $conn->UserRegistration($connobj, $reg_data);
-    $conn->CloseCon($connobj);
-}
 ?>

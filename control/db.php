@@ -22,12 +22,12 @@ class db
     {
         $def_value = "0"; // Default value of verified column
         $message_s = "";
-        $que = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $sqlq = $conn->prepare($que);
-        $sqlq->bind_param("ssssssss", $reg_data['username'], $reg_data['name'], $reg_data['gender'], $reg_data['email'], $reg_data['password'],
-        $reg_data['dob'], $reg_data['usertype'], $reg_data['img']);
+        $uname = $reg_data['username']; $fname = $reg_data['name']; $gndr = $reg_data['gender'];
+        $email = $reg_data['email']; $pass = $reg_data['password']; $dob = $reg_data['dob'];
+        $utype = $reg_data['usertype']; $img = $reg_data['img'];
+        $que = "INSERT INTO users VALUES ('$uname', '$fname', '$gndr', '$email', '$pass', '$dob', '$utype', '$img')";
         
-        if($sqlq->execute())
+        if($conn->query($que))
         {
             $message_s = "<h4>Registration successful...</h4>" ;
         }
@@ -71,6 +71,38 @@ class db
                             <div class="container">
                                 <div class="row">
                                     <div class="col text-center"><span>Password change failed!</span></div>
+                                </div>
+                            </div>
+                        </div>';
+        }
+
+        $sqlq->close();
+
+        return $message_s;
+    }
+    function changeGeneralInfo($conn, $username, $fullname, $email)
+    {
+        $message_s = "";
+        $que = "UPDATE users SET fullname = ?, email = ? WHERE username = ?";
+        $sqlq = $conn->prepare($que);
+        $sqlq->bind_param("sss", $fullname, $email, $username);
+        
+        if($sqlq->execute())
+        {
+            $message_s = '
+            <div id="action-message">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center"><span>General info updated successfully</span></div>
+                    </div>
+                </div>
+            </div>' ;
+        }
+        else {
+            $message_s = '<div id="action-message">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center"><span>General info updated failed!</span></div>
                                 </div>
                             </div>
                         </div>';
