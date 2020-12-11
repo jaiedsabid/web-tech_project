@@ -25,8 +25,6 @@ include("../control/regcheck-and-reg.php");
             max-width: 500px;
             padding: 10px;
             margin: auto;
-            position: relative;
-            overflow: scroll;
         }
 
         .form-warper {
@@ -70,15 +68,15 @@ include("../control/regcheck-and-reg.php");
         }
 
         .container>a {
-            margin-top: 10px;
-            position: absolute;
-            left: 20%;
+            margin-top: 10px auto 10px auto;
+            position: relative;
+            left: 18%;
         }
 
         .footer {
-            position: absolute;
-            bottom: 1px;
-            left: 37%;
+            position: relative;
+            left: 5%;
+            margin-top: 10px;
             padding: 10px;
         }
 
@@ -193,10 +191,11 @@ include("../control/regcheck-and-reg.php");
             </form>
         </fieldset>
         <a href="../index.php" style="text-decoration: none; display: block;">Already have an account? Go back to login page</a>
-    </div>
+    
     <footer>
-            <div class="footer">Copyright© 2020-<?php include("footer.php"); ?> by Jaied Al Sabid. All Rights Reserved.</div>
+        <div class="footer">Copyright© 2020-<?php include("footer.php"); ?> by Jaied Al Sabid. All Rights Reserved.</div>
     </footer>
+    </div>
     <script src="js/signup-form.js"></script>
 </body>
 </html>
