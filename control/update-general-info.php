@@ -1,6 +1,6 @@
 <?php
 
-$result = '';
+$result1 = '';
 
 if(isset($_POST['ginfo']))
 {
@@ -18,7 +18,7 @@ if(isset($_POST['ginfo']))
         }
 
         else {
-            $result = '<div id="action-message">
+            $result1 = '<div id="action-message">
                             <div class="container">
                                 <div class="row">
                                     <div class="col text-center"><span>* Please enter a valid email address *</span></div>
@@ -30,7 +30,7 @@ if(isset($_POST['ginfo']))
 
     else
     {
-        $result = '<div id="action-message">
+        $result1 = '<div id="action-message">
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center"><span>* Please fill out the form correctly *</span></div>
@@ -47,6 +47,5 @@ if(isset($_POST['ginfo']))
     $conobj = $con->OpenCon();
     $res = $con->CheckUserType($conobj, $_SESSION['username']);
     $con->CloseCon($conobj);
-    $_SESSION['all_data'] = NULL;
     $_SESSION['all_data'] = $res;
 ?>

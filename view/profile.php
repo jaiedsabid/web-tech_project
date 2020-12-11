@@ -32,8 +32,8 @@ include('../control/update-general-info.php');
     <div class="text-center">
         <h1 style="padding: 10px;margin-top: 55px;">User Profile</h1>
     </div>
-
-    <?php echo $result; ?> <!-- Action Message -->
+    
+    <?php echo $mresult; echo $result1; ?> <!-- Action Message -->
 
     <div style="margin-bottom: 10px;">
         <div class="container">
@@ -69,7 +69,7 @@ include('../control/update-general-info.php');
                             <form method="post">
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <div class="col"><label class="change-info" for="name">Full Name:<input class="form-control" type="text" name="fname"></label><label class="change-info" for="email">Email:&nbsp;<input class="form-control" type="text" name="email"></label></div>
+                                        <div class="col"><label class="change-info" for="name">Full Name:<input id="fname" class="form-control" type="text" name="fname"></label><label class="change-info" for="email">Email:&nbsp;<input id="email" class="form-control" type="text" name="email"></label></div>
                                     </div>
                                     <div class="text-center"><button class="btn btn-primary change-info-btn" type="submit" name="ginfo">Apply</button><button class="btn btn-primary change-info-btn" type="reset" name="reset">Reset</button></div>
                                 </div>

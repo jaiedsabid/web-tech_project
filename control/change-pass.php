@@ -2,7 +2,7 @@
 
 include('db.php');
 
-$result = '';
+$mresult = '';
 
 if(isset($_POST['submit']))
 {
@@ -19,30 +19,30 @@ if(isset($_POST['submit']))
             }
 
             else {
-                $result = '<div id="action-message">
+                $mresult = '<div id="action-message">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center"><span>* Password length must be 8 digit *</span></div>
                                     </div>
                                 </div>
-                            </div>' ;
+                            </div>';
             }
         }
 
         else {
-            $result = '<div id="action-message">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col text-center"><span>* Password do not match *</span></div>
-                                </div>
+            $mresult = '<div id="action-message">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center"><span>* Password do not match *</span></div>
                             </div>
-                        </div>' ;
+                        </div>
+                    </div>' ;
         }
     }
 
     else
     {
-        $result = '<div id="action-message">
+        $mresult = '<div id="action-message">
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center"><span>* Password and Confirm password field cannot be empty *</span></div>

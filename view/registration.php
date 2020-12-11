@@ -82,6 +82,13 @@ include("../control/regcheck-and-reg.php");
             padding: 10px;
         }
 
+        #message {
+            display: none;
+            font-weight: 600;
+            fontsize: 25px;
+            color: red;
+        }
+
         #full-name, #user-email, #username, #password, #cpassword{
             position: absolute;
             left: 46%;
@@ -91,6 +98,7 @@ include("../control/regcheck-and-reg.php");
 </head>
 <body>
     <div class="container">
+    <div id="message">Warning</div>
     <?php
         echo "<h4 style='color: red'>$message_x</h4>";
         echo "<h4 style='color: red'>$message_f</h4>";
@@ -99,7 +107,7 @@ include("../control/regcheck-and-reg.php");
     ?>
         <fieldset>
             <legend><strong>Registration</strong></legend>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+            <form id="signup" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" >
             <div class="form-warper">
                 <div class="form-group form-border">
                     <label for="full-name">Name:</label>
@@ -137,7 +145,7 @@ include("../control/regcheck-and-reg.php");
                                 <input type="radio" name="gender" id="female" value="female"> Female
                             </label>
                             <label class="btn btn-primary">
-                                <input type="radio" name="gender" id="female" value="female"> Other
+                                <input type="radio" name="gender" id="other" value="female"> Other
                             </label>
                         </div>
                     </fieldset>
@@ -178,7 +186,7 @@ include("../control/regcheck-and-reg.php");
                 </div>
                 
                 <div class="form-submit">
-                    <input type="submit" name="submit" value="Submit">
+                    <input type="submit" name="submit" value="Submit" id="submit">
                     <input type="reset" value="Reset">
                 </div>
             </div>
@@ -189,5 +197,6 @@ include("../control/regcheck-and-reg.php");
     <footer>
             <div class="footer">Copyright© 2020-<?php include("footer.php"); ?> by Jaied Al Sabid. All Rights Reserved.</div>
     </footer>
+    <script src="js/signup-form.js"></script>
 </body>
 </html>
