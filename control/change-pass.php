@@ -16,6 +16,13 @@ if(isset($_POST['submit']))
                 $conObj = $con->OpenCon();
                 $result = $con->changePassword($conObj, $_SESSION['all_data']['username'], $_POST['password']);
                 $con->CloseCon($conObj);
+                $mresult = '<div id="action-message">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center"><span>Password changed successfully</span></div>
+                                    </div>
+                                </div>
+                            </div>';
             }
 
             else {

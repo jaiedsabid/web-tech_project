@@ -23,6 +23,14 @@ include('../control/update-general-info.php');
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
+    <style>
+    #warning {
+        display: none;
+        background-color: yellow;
+        font-weight: 500;
+        text-align: center;
+    }
+    </style>
 </head>
 
 <body style="background: rgb(241,247,252);">
@@ -34,7 +42,7 @@ include('../control/update-general-info.php');
     </div>
     
     <?php echo $mresult; echo $result1; ?> <!-- Action Message -->
-
+    <div id="warning">Warning</div>
     <div style="margin-bottom: 10px;">
         <div class="container">
             <div class="row">
@@ -66,7 +74,7 @@ include('../control/update-general-info.php');
                         <div class="col">
                             <hr>
                             <h5 style="text-align: center;padding: 10px;">Change General Info</h5>
-                            <form method="post">
+                            <form id="general-info" method="post">
                                 <div class="form-group">
                                     <div class="form-row">
                                         <div class="col"><label class="change-info" for="name">Full Name:<input id="fname" class="form-control" type="text" name="fname"></label><label class="change-info" for="email">Email:&nbsp;<input id="email" class="form-control" type="text" name="email"></label></div>
@@ -82,10 +90,10 @@ include('../control/update-general-info.php');
                         <div class="col">
                             <hr>
                             <h5 style="text-align: center;padding: 10px;">Change Password</h5>
-                            <form method="post">
+                            <form id="user-password" method="post">
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <div class="col"><label class="change-info" for="password">New Password:<input class="form-control" type="password" name="password"></label><label class="change-info" for="password">Confirm Password:&nbsp;<input class="form-control" type="password" name="cpassword"></label></div>
+                                        <div class="col"><label class="change-info" for="password">New Password:<input id="password" class="form-control" type="password" name="password"></label><label class="change-info" for="password">Confirm Password:&nbsp;<input id="cpassword" class="form-control" type="password" name="cpassword"></label></div>
                                     </div>
                                     <div class="text-center"><button class="btn btn-primary change-info-btn" type="submit" name="submit">Apply</button><button class="btn btn-primary change-info-btn" type="reset" name="reset">Reset</button></div>
                                 </div>
@@ -109,6 +117,7 @@ include('../control/update-general-info.php');
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>

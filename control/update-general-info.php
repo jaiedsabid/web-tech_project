@@ -15,6 +15,13 @@ if(isset($_POST['ginfo']))
             $conObj = $con->OpenCon();
             $result = $con->changeGeneralInfo($conObj, $_SESSION['all_data']['username'], $_POST['fname'], $_POST['email']);
             $con->CloseCon($conObj);
+            $result1 = '<div id="action-message">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center"><span>General information updated successfully</span></div>
+                                </div>
+                            </div>
+                        </div>' ;
         }
 
         else {
