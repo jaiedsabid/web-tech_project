@@ -1,8 +1,8 @@
 <?php
 session_start(); 
-if(empty($_SESSION["username"])) 
+if(empty($_SESSION["username"]) || empty($_COOKIE['username'])) 
 {
-header("Location: ../control/login.php"); // Redirecting To Home Page
+header("Location: ../control/logout.php"); // Redirecting To Home Page
 }
 
 include('../control/change-pass.php');

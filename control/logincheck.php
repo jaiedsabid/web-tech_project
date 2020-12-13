@@ -27,6 +27,7 @@
             {
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
+                setcookie('username', $username, time() + 3600, '/');
             }
 
             else

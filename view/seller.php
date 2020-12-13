@@ -1,8 +1,8 @@
 <?php
 session_start(); 
-if(empty($_SESSION["username"])) 
+if(empty($_SESSION["username"]) || empty($_COOKIE['username'])) 
 {
-header("Location: ../control/login.php"); // Redirecting To Home Page
+header("Location: ../control/logout.php"); // Redirecting To Home Page
 }
 
 if($_SESSION['utype'] != "employee") // Redirecting to home if user is not seller type

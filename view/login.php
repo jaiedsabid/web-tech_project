@@ -3,7 +3,7 @@
     include("../control/logincheck.php");
 
     if(isset($_SESSION['username'])){
-    header("location: home.php");
+        header("location: home.php");
     }
 
 ?>
