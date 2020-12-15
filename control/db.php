@@ -112,6 +112,92 @@ class db
 
         return $message_s;
     }
+
+    function createSupportMessage($conn, $support_msg)
+    {
+        $result = "";
+        $msg = $support_msg['msg'];
+        $cu_id = $support_msg['cid'];
+        $que = "INSERT INTO support (message, cu_id) VALUES ('$msg', '$cu_id')";
+        
+        if($conn->query($que))
+        {
+            $result = "Support message created successfully..." ;
+        }
+        else {
+            $result =  "Support message creation failed...!";
+        }
+
+        return $result;
+    }
+
+    function replyMessage($conn, $reply_msg)
+    {
+        $result = '';
+        $id = $reply_msg['id'];
+        $reply = $reply_msg['reply'];
+        $stuff_id = $reply_msg['stuff_id'];
+
+        $que = "UPDATE support SET reply='$reply', stuff_id='$stuff_id' WHERE id='$id'";
+        if($conn->query($que))
+        {
+            $result = "Reply sent successfully.";
+        }
+        else {
+            $result = "Reply sent failed!";
+        }
+
+        return $result;
+    }
+
+    function deleteMessage($conn, $id)
+    {
+        $result = '';
+
+        $que = "DELETE FROM support WHERE id='$id'";
+        if($conn->query($que))
+        {
+            $result = "Message deleted successfully.";
+        }
+        else {
+            $result = "Unable to delete the message!";
+        }
+
+        return $result;
+    }
+
+    function getMessageAndReply($conn)
+    {
+        $query = "SELECT * FROM support";
+        $result = $conn->query($query);
+        $data = [];
+        if(!empty($result))
+        {
+            while($res = $result->fetch_assoc())
+            {
+                array_push($data, $res);
+            }
+        }
+        $result->free();
+        return $data;
+    }
+
+    function getMessageAndReplyByID($conn, $id)
+    {
+        $query = "SELECT * FROM support WHERE cu_id='$id'";
+        $result = $conn->query($query);
+        $data = [];
+        if(!empty($result) && $result->num_rows > 0)
+        {
+            while($res = $result->fetch_assoc())
+            {
+                array_push($data, $res);
+            }
+        }
+        $result->free();
+        return $data;
+    }
+
     function CloseCon($conn)
     {
         $conn->close();

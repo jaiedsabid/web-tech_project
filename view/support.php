@@ -9,6 +9,9 @@ if($_SESSION['utype'] == "support" && $_SESSION['utype'] == "customer" && $_SESS
 {
     header("location: home.php");
 }
+
+include('../control/support.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -26,32 +29,43 @@ if($_SESSION['utype'] == "support" && $_SESSION['utype'] == "customer" && $_SESS
 </head>
 
 <body style="background: #e7f0f8;">
-    
-    <?php include('navbar.php'); ?>
-
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" style="background: rgba(179,189,197,0.8);box-shadow: 0px 0px 5px 2px rgb(139,139,146);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><strong>Movie Tickets</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <?php include('navbar.php');?>
+            </div>
+        </div>
+    </nav>
     <div style="background: #ffffff;padding-bottom: 20px;margin-top: 60px;">
         <h1 class="text-center">Support Center</h1>
+        
+        <div id="user_id" style="display: none;"><?php echo $_SESSION['all_data']['username']; ?></div>
+        <div id="user_type" style="display: none;"><?php echo $_SESSION['all_data']['utype']; ?></div>
+        
         <div id="action-message">
             <div class="container text-center">
                 <div class="row">
-                    <div class="col"><span>Action Message</span></div>
+                    <div class="col"><span><?php echo $result; ?></span></div>
                 </div>
             </div>
         </div>
         <div class="container" style="margin-bottom: 60px;">
             <div class="row">
                 <div class="col">
-                    <div class="user-message-create">
-                        <h4>Create new message</h4><textarea class="form-control-lg user-message-input" placeholder="Your Message" cols="31" name="user-message"></textarea><button class="btn btn-primary post-btn" type="button" name="create">Post</button></div>
+                    <form method="post" class="user-message-create">
+                        <h4>Create new message</h4><textarea class="form-control form-control-lg user-message-input" placeholder="Your Message" cols="31" name="user-message"></textarea><button class="btn btn-primary post-btn" type="submit" name="create">Post</button>
+                    </form>
                 </div>
             </div>
             <div class="row">
-                <div class="col message-block">
+                <div id="msg-reply-blk" class="col message-block">
                     <h4 class="text-center" style="margin-top: 10px;">Messages &amp; Reply</h4>
-                    <div><span class="message-id">MessageID</span>
-                        <hr style="margin-bottom: auto;margin-top: auto;"><span class="cmessage">Message</span><span class="emessage">Reply Message</span><textarea class="emessage-input message-block"></textarea><button class="btn btn-primary reply-btn" type="button" name="reply">Reply</button></div>
-                    <div><span class="message-id">MessageID</span>
-                        <hr style="margin-bottom: auto;margin-top: auto;"><span class="cmessage">Message</span><span class="emessage">Reply Message</span><textarea class="emessage-input"></textarea><button class="btn btn-primary reply-btn" type="button" name="submit">Reply</button></div>
+                    <form id="1" method="post"><span class="message-id">MessageID<button class="btn btn-primary delete-btn" type="button" name="delete">Delete</button></span>
+                        <hr style="margin-bottom: auto;margin-top: auto;"><span class="cmessage">Message</span><span class="emessage">Reply Message</span><textarea class="form-control emessage-input message-block"></textarea><button class="btn btn-primary reply-btn" type="button" name="reply">Reply</button>
+                    </form>
+                    <form method="post"><span class="message-id">MessageID<button class="btn btn-primary delete-btn" type="button" name="delete">Delete</button></span>
+                        <hr style="margin-bottom: auto;margin-top: auto;"><span id="smessage-1" class="cmessage">Message</span><span id="sreply-1" class="emessage">Reply Message</span><textarea class="form-control emessage-input message-block"></textarea><button class="btn btn-primary reply-btn" type="button" name="reply">Reply</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -69,6 +83,7 @@ if($_SESSION['utype'] == "support" && $_SESSION['utype'] == "customer" && $_SESS
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/support.js"></script>
 </body>
 
 </html>

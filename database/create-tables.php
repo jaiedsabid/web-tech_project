@@ -55,3 +55,33 @@
     }
     $conn->close();
 ?>
+
+<?php 
+
+$servername = "localhost";
+    $username = "root";//DB default username is root
+    $password = "";//DB default password in empty/null
+    $dbname = "ticketing_sys";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+    // sql to create table
+    $sql = "CREATE TABLE support (
+        id int NOT NULL AUTO_INCREMENT,
+        message varchar(255) NOT NULL,
+        reply varchar(255),
+        cu_id varchar(50),
+        stuff_id varchar(50),
+        PRIMARY KEY (id)
+        )";
+    if ($conn->query($sql) === TRUE) {
+    echo "Table support created successfully";
+    } else {
+    echo "Error creating table: " . $conn->error;
+    }
+    $conn->close();
+
+?>
